@@ -2,11 +2,16 @@ class Tree
   attr_accessor :children, :node_name
 
   def initialize(tree)
-    @node_name = tree.keys.first
-    @children  = []
-    child_nodes  = tree[@node_name]
-    child_nodes.each do |child_node|
-      @children << Tree.new(child_node) if child_node.is_a?(Hash)      
+    if tree.is_a?(Hash)
+      @node_name = tree.keys.first
+      @children  = []
+      child_nodes  = tree[@node_name]
+      child_nodes.each do |child_node|
+        @children << Tree.new(child_node) 
+      end
+    else
+      @node_name = tree
+      @children = []
     end
   end
 
