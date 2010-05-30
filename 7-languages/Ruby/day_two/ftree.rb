@@ -10,6 +10,7 @@ class Tree
         @children << Tree.new(child_node) 
       end
     else
+p tree
       @node_name = tree
       @children = []
     end

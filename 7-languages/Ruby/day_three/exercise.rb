@@ -1,17 +1,11 @@
 class CsvRow
   attr_accessor :row, :header
-  def initialize(row_content)
-    @header = row_content.shift
+  def initialize(header, row_content)
+    @header = header
     @row = row_content
   end
-  def header
-    @header
-  end
   def method_missing name, *args
-    method_name = name.to_s.downcase
-    if method_name == header.to_s.downcase
-      puts row
-    end
+    puts row if name.to_s.downcase == header.to_s.downcase
   end
 end
 module ActsAsCsv
@@ -32,8 +26,8 @@ module ActsAsCsv
       file = File.new(filename)
       @headers = file.gets.chomp.split(', ')
 
-      file.each do |row|
-        @csv_contents << row.chomp.split(', ')
+      @csv_contents = file.map do |row|
+        row.chomp.split(', ')
       end
     end
 
@@ -41,12 +35,10 @@ module ActsAsCsv
 
     def each(&block)
       @headers.each_with_index do |header, index|
-        row_content = [header]
-        @csv_contents.each do |arr|
-          row_content << arr[index]
+        row_content = @csv_contents.map do |arr|
+          arr[index]
         end
-        row = CsvRow.new(row_content) 
-        yield row
+        yield CsvRow.new(header, row_content)
       end
     end
 
