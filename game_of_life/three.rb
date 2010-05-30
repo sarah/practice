@@ -1,7 +1,7 @@
 require 'timeout'
 class Cell
   def initialize
-    @alive = 0.5 > rand
+    @alive = 0.1 > rand
     # puts "in initialize: @alive: #{@alive}; #{@alive.class}"
   end
   def alive?
