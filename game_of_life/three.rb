@@ -55,7 +55,9 @@ class Game
         ]
         neighbors = get_neighbors(possible_neighbors, cell_coords)
         p "coords #{cell_coords.inspect}: neighbors: #{neighbors.size}: #{neighbors.inspect}"
-        p "-------"
+        puts "I have #{count_active_neighbors(neighbors)} active neighbors"
+        puts "-------"
+
       end
     end
   end
@@ -66,7 +68,10 @@ class Game
       !neighbor_coords.include?(-1) && (x < @width) && (y < @height)
     end
   end
-  def count_active_neighbors(x,y,neighbors)
+  def count_active_neighbors(neighbors)
+    neighbors.inject(0) do |sum,coords|
+      sum + @grid[coords[0]][coords[1]].to_i
+    end
   end
   def cell_neighbors(y,x)
   end
