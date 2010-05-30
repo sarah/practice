@@ -90,6 +90,6 @@ class Game
   end
 end
 
-game = Game.new(40,40,500)
+game = Game.new(40,40,20)
 game.play
 
