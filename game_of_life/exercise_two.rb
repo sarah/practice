@@ -55,18 +55,21 @@ class Game
        draw
      end
   end
+  # there are 8 possible postions for any cell in a grid
+  def possible_neighbors(y,x)
+    [
+      [y,x-1],[y,x+1], # sides
+      [y-1,x-1], [y-1,x], [y-1,x+1], # top
+      [y+1,x-1], [y+1,x], [y+1,x+1]  # bottom
+    ]
+  end
   # calculate whether each cell should be alive or dead and return new grid
   def next_state
     @grid.each_with_index do |row, y|
       row.each_with_index do |cell, x|
         cell = @grid[y][x]
         cell_coords = [y,x]
-        possible_neighbors = [
-          [y,x-1],[y,x+1], # sides
-          [y-1,x-1], [y-1,x], [y-1,x+1], # top
-          [y+1,x-1], [y+1,x], [y+1,x+1]  # bottom
-        ]
-        neighbors = get_neighbors(possible_neighbors, cell_coords)
+        neighbors = get_neighbors(possible_neighbors(y,x), cell_coords)
         num_active_neighbors = count_active_neighbors(neighbors)
         cell.next_state!(num_active_neighbors)
       end
@@ -75,7 +78,7 @@ class Game
   def get_neighbors(possible_neighbors,cell_coords)
     possible_neighbors.select do |neighbor_coords|
       y,x = neighbor_coords[0], neighbor_coords[1]
-      !neighbor_coords.include?(-1) && (x < @width) && (y < @height)
+      (!neighbor_coords.include?(-1)) && (x < @width) && (y < @height)
     end
   end
   def count_active_neighbors(neighbors)
