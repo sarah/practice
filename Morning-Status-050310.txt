@@ -1,0 +1,13 @@
+Today got started with the K&R. I'd read a chapter before on the train but this time went through the exercises. On Corey's suggestion, set up ~/Documents/practice and pushed it to github. Created the practice repo and ignored the *.out files.  Then wrote, by following in the excercises, the Hello World and some F to C conversion programs. Focused on printf and basics of file structure. Played around to get a few errors. Interesting to be doing a compiled language: I haven't done that since Java class, and it's different so see the syntax errors before you run the file. Also, not entirely sure what a.out *is* -- clearly it is the compiled program and you can run it, but still, what *is* it. Also, diff between cc and gcc? Both work on the mac. This is fun! Where's a good place for the morning statuses? 
+
+May 5, 2010
+
+Wrote first draft of 'where's the sticky' blog post. Installed VIM on Coreys machine. Clone Vimlander-2-The-Quickening; rename as vim files. Blow away ~/.vim and .vimrc. mkdir ~/Documents/sarah-vim cd ~/Documents/sarah-vim ; git clone git@github.com:sarah/vim-files.git ; cd ; ln -s ~/Documents/sarah-vim/vim-files .vim ; ln -s  .vim/vimrc .vimrc ; cd ~/Documents/sarah-vim/vim-files ; git submodule init; git submodule update ; (not sure on those two steps); cd ; edit .vimrc comment out Neocomplache; comment out the mapping of ii.  
+
+Remember to ask Corey if I got the other vimrc edits he made yesterday. 
+
+Grr, writing blog posts is annoying. Love, me.
+
+May 7, 2010
+
+Today annoying. Half ipad sync, half edit blog post, half go through 7 langs ruby chapter, half look for headphones. Too many halves.  Going to go look for headphones for my final three minutes. Oh, also the ibooks application got deleted for some reason. I'll have to google why.  Other than that, frenetic feeling of 'what to do'. Want to get these more organized. But ,not today I guess :)

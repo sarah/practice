@@ -1,0 +1,26 @@
+Modify the CSV application to support an each method to return a CsvRow object. 
+
+Use method_missing on that CsvRow to return the value for the column for a given heading. 
+
+For example, for the file:
+one, two
+lions, tigers
+bears, people
+
+build an API that works like this:
+
+csv = RubyCsv.new csv.each {|row| puts row.one}
+
+and gives the following output:
+
+"lions"
+"bears"
+
+And if you asked for the row with the heading of "two": 
+
+csv = RubyCsv.new csv.each {|row| puts row.two}
+
+you'd get the following output:
+
+"tigers"
+"people"
