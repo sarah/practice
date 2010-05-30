@@ -9,7 +9,7 @@ class Cell
     @alive
   end
   def to_s
-   alive? ? "x" : " "
+   alive? ? "o" : " "
   end
   # used for summing active_neighbors count
   def to_i
@@ -43,7 +43,7 @@ class Game
     @grid.each do |row|
       puts row.map{|cell|
         cell.to_s
-      }.join("  ")
+      }.join("")
     end
   end
   # draw the grid as many times as specified when the game started (@steps)
@@ -90,6 +90,6 @@ class Game
   end
 end
 
-game = Game.new(40,40,20)
+game = Game.new(100,50,100)
 game.play
 
