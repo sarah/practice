@@ -19,8 +19,8 @@ class Game
   # Make a grid of cells
   def initialize(width,height,steps)
     @width,@height,@steps = width, height, steps
-    @grid = Array.new(@width){
-      Array.new(@height){
+    @grid = Array.new(@height){
+      Array.new(@width){
         Cell.new
       }
     }
@@ -54,13 +54,15 @@ class Game
           [y+1,x-1], [y+1,x], [y+1,x+1]  # bottom
         ]
         neighbors = get_neighbors(possible_neighbors, cell_coords)
-        p "coords #{cell_coords.inspect}: neighbors: #{neighbors.inspect}"
+        p "coords #{cell_coords.inspect}: neighbors: #{neighbors.size}: #{neighbors.inspect}"
+        p "-------"
       end
     end
   end
   def get_neighbors(possible_neighbors,cell_coords)
     possible_neighbors.select do |neighbor_coords|
       y,x = neighbor_coords[0], neighbor_coords[1]
+      puts "y: #{y}; x: #{x}; width: #{@width}; height: #{@height}"
       !neighbor_coords.include?(-1) && (x < @width) && (y < @height)
     end
   end
@@ -70,6 +72,6 @@ class Game
   end
 end
 
-game = Game.new(4,4,1)
+game = Game.new(4,8,1)
 game.play
 
