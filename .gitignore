@@ -1,2 +1,4 @@
 *.out
 7-langs-corey/*
+cucumber*
+game_of_life/*
