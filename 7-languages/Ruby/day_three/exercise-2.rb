@@ -1,3 +1,12 @@
+class CsvRow
+  def initialize(headers, items)
+    @headers,@items = headers, items
+  end
+  def method_missing name, *args
+    index = @headers.index name.to_s
+    index ? @items[index] : "There is no column titled #{name}"
+  end
+end
 module ActsAsCsv
   def self.included(base)
     base.extend ClassMethods
@@ -8,6 +17,13 @@ module ActsAsCsv
     end
   end
   module InstanceMethods
+    attr_accessor :headers, :csv_contents
+    def initialize
+      read
+    end
+    def each
+      csv_contents.each {|row| yield CsvRow.new(@headers, row)}
+    end
     def read
       @csv_contents = []
       filename = self.class.to_s.downcase + ".txt"
@@ -19,10 +35,6 @@ module ActsAsCsv
       end
     end
   end
-  attr_accessor :headers, :csv_contents
-  def initialize
-    read
-  end
 end
 
 class RubyCsv
@@ -30,6 +42,6 @@ class RubyCsv
   acts_as_csv
 end
 
-m = RubyCsv.new
-puts m.headers.inspect
-puts m.csv_contents.inspect
+
+csv = RubyCsv.new
+csv.each{|row| puts row.one}

@@ -57,5 +57,5 @@ class Game
   end
 end
 
-Game.new(100, 50, 0.1, 100).play!
+Game.new(100, 100, 0.1, 100).play!
 

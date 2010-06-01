@@ -1,4 +1,4 @@
-Dogs, Cats, Birds, Whales, The Dolphin, People
-rover, flash, tweetie, moby dick, dolphinius, john doe
-spot, zak, parroty-the-parrot, fatso-the-whale, disney-dolphin, you
-yipper, fluffy, polly, killer, smartie, me
+one, two, three
+rover, flash, tweetie
+spot, zak, parroty-the-parrot
+yipper, fluffy, polly
